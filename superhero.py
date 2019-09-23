@@ -19,14 +19,29 @@ class Ability:
         # Return an attack value between 0 and the full attack.
         # Hint: The constructor initializes the maximum attack value.
         return random.randint(0, self.attack_strength)
-        
+
+
+class Armor:
+        def __init__(self, name, max_block):
+            '''Instantiate instance properties. 
+                name: String
+                max_block = Integer
+            '''
+            self.name = name
+            self.max_block = max_block
+            # TODO: Create instance variables for the values passed in.
+
+
+        def block(self):
+            ''' Return a random value between 0 and the initialized max_block strength '''
+            return random.randint(0, self.max_block)
 
 
 
 
-    if __name__ == "__main__":
-        # If you run this file from the terminal
-        # this block is executed
-        ability1 = Ability("Debugging Ability", 20)
-        print(ability1.name)
-        print(ability1.attack())
+if __name__ == "__main__":
+     # If you run this file from the terminal
+    # this block is executed
+    ability1 = Ability("Debugging Ability", 20)
+    print(ability1.name)
+    print(ability1.attack())
