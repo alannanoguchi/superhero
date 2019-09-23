@@ -37,11 +37,64 @@ class Armor:
             return random.randint(0, self.max_block)
 
 
+class Hero:
+    def __init__(self, name, starting_health = 100):
+        '''Instance properties:
+            abilities: List
+            armors: List
+            name: String
+            starting_health: Integer
+            current_health: Integer
+        '''
+        # TODO: Initialized instance variables values as instance variables
+        # (some of these valyes are passed in above, 
+        # others will need to be set as a starting value)
+        # abilities and armors are lists that will contain objects we can use
+        self.abilities = []
+        self.armors = []
+        self.name = name
+        self.starting_health = starting_health
+        self.current_health = starting_health
+
+    def add_ability(self, ability):
+        ''' Add ability to abilities list '''
+        # TODO: Add ability object to abilities: list
+        self.abilities.append(ability)
+
+
+
+
+
 
 
 if __name__ == "__main__":
-     # If you run this file from the terminal
+    # If you run this file from the terminal
     # this block is executed
-    ability1 = Ability("Debugging Ability", 20)
-    print(ability1.name)
-    print(ability1.attack())
+
+    # Test the Ability class: (
+    # expected output: 
+    # Debugging Ability
+    # plus a random integer 0-20)
+    # ability1 = Ability("Debugging Ability", 20)
+    # print(ability1.name)
+    # print(ability1.attack())
+
+    # Test the Hero class: (
+    # expected output:
+    # Grace Hopper
+    # 200)
+    # my_hero = Hero("Pumpkin Pie", 200)
+    # print(my_hero.name)
+    # print(my_hero.current_health)
+
+    # Test the abilities method inside the Abilities class: (
+    # expected output:
+    # [<__main__.Ability object at 0x7f8debceeb00])
+    ability1 = Ability("Great Debugging", 50)
+    ability2 = Ability("Super Strength", 80)
+    ability3 = Ability("Super Speed", 70)
+    hero = Hero("Pumpkin Pie", 200)
+    hero.add_ability(ability1)
+    hero.add_ability(ability2)
+    hero.add_ability(ability3)
+    print(hero.abilities)
