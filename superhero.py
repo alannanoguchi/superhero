@@ -70,7 +70,9 @@ class Hero:
         total_damage = 0
         for ability in self.abilities:
             attack = ability.attack()
-            total_damage += attack + total_damage
+            total_damage += attack
+        
+        return total_damage
 
     def add_armor(self, armor):
         '''Add armor to self.armors
@@ -87,7 +89,14 @@ class Hero:
         total_armor = 0
         for damage_amt in self.armors:
             total_armor += damage_amt.block()
+        return total_armor
 
+    def take_damage(self, damage):
+        '''Updates self.current_health to reflect the damage minus the defense.
+        '''
+        # TODO: Create a method that updates self.current_health to the current 
+        # minue the amount returned from calling self.defend(damage).
+        self.current_health -= damage
 
 
 
@@ -118,11 +127,16 @@ if __name__ == "__main__":
     # Test the abilities method inside the Abilities class: (
     # expected output:
     # [<__main__.Ability object at 0x7f8debceeb00])
-    ability1 = Ability("Great Debugging", 50)
-    ability2 = Ability("Super Strength", 80)
-    ability3 = Ability("Super Speed", 70)
+    # ability1 = Ability("Great Debugging", 50)
+    # ability2 = Ability("Super Strength", 80)
+    # ability3 = Ability("Super Speed", 70)
+    # hero = Hero("Pumpkin Pie", 200)
+    # hero.add_ability(ability1)
+    # hero.add_ability(ability2)
+    # hero.add_ability(ability3)
+    # print(hero.attack())
     hero = Hero("Pumpkin Pie", 200)
-    hero.add_ability(ability1)
-    hero.add_ability(ability2)
-    hero.add_ability(ability3)
-    print(hero.attack())
+    shield = Armor("Shield", 50)
+    hero.add_armor(shield)
+    hero.take_damage(50)
+    print(hero.current_health)
