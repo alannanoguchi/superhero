@@ -138,7 +138,7 @@ class Weapon(Ability):
         # TODO: Use what you learned to complete this method
         return random.randint(self.max_damage//2, self.max_damage)
 
-class Team():
+class Team(Hero):
     def __init__(self, name):
         ''' Initialize your team with its team name 
         '''
@@ -156,7 +156,13 @@ class Team():
                 self.heroes.remove(hero)
             else:
                 return 0
-        
+    
+    def view_all_heroes(self):
+        ''' Prints out all heroes to the console.'''
+        # TODO: Loop over the list of heroes and print their nmaes to the terminal.
+        for hero in self.heroes:
+            print(hero.name)
+            
             
 
 
