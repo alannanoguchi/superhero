@@ -98,8 +98,37 @@ class Hero:
         # minue the amount returned from calling self.defend(damage).
         self.current_health -= damage
 
+    def is_alive(self):
+        '''Return True or False depending on whether the hero is alive or not. 
+        '''
+        # TODO: Check whether the hero is alive and return true or false
+        if self.current_health > 0:
+            return True
+        else: 
+            return False
 
+    def fight(self, opponent):
+        '''Current Hero will take turns fighting the opponent hero passed in.
+        '''
+        # TODO: Fight each hero until a victor emerges.
+        # Print the Victor's name to the screen.
+        self.opponent = opponent 
+        while self.is_alive()== True and opponent.is_alive() == True:
+            if len(self.abilities) > 0 or len(opponent.abilities) > 0:
+                self_attack = hero.attack()
+                opponent_attack = opponent.attack()
 
+                # if hero is taking damage, it is because the opponent attacked vise versa
+                self.take_damage(opponent_attack)
+                opponent.take_damage(self_attack)
+
+                if self.is_alive == False:
+                    print("The winner is: {}!".format(opponent.name))
+                else:
+                    print("The winner is: {}!".format(self.name))
+            else:
+                print("Draw!")
+            
 
 
 
@@ -108,35 +137,13 @@ if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed
 
-    # Test the Ability class: (
-    # expected output: 
-    # Debugging Ability
-    # plus a random integer 0-20)
-    # ability1 = Ability("Debugging Ability", 20)
-    # print(ability1.name)
-    # print(ability1.attack())
-
-    # Test the Hero class: (
-    # expected output:
-    # Grace Hopper
-    # 200)
-    # my_hero = Hero("Pumpkin Pie", 200)
-    # print(my_hero.name)
-    # print(my_hero.current_health)
-
-    # Test the abilities method inside the Abilities class: (
-    # expected output:
-    # [<__main__.Ability object at 0x7f8debceeb00])
-    # ability1 = Ability("Great Debugging", 50)
-    # ability2 = Ability("Super Strength", 80)
-    # ability3 = Ability("Super Speed", 70)
-    # hero = Hero("Pumpkin Pie", 200)
-    # hero.add_ability(ability1)
-    # hero.add_ability(ability2)
-    # hero.add_ability(ability3)
-    # print(hero.attack())
-    hero = Hero("Pumpkin Pie", 200)
-    shield = Armor("Shield", 50)
-    hero.add_armor(shield)
-    hero.take_damage(50)
-    print(hero.current_health)
+    hero = Hero("Pumpkin Pie")
+    opponent = Hero("Vanilla Cake")
+    ability1 = Ability("Lazer Eyes", 65)
+    ability2 = Ability("Super Strength", 80)
+    ability3 = Ability("Super Speed", 70)
+    hero.add_ability(ability1)
+    hero.add_ability(ability2)
+    opponent.add_ability(ability2)
+    opponent.add_ability(ability3)
+    hero.fight(opponent)
