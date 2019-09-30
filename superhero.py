@@ -137,6 +137,14 @@ class Weapon(Ability):
         """
         # TODO: Use what you learned to complete this method
         return random.randint(self.max_damage//2, self.max_damage)
+
+class Team():
+    def __init__(self, name):
+        ''' Initialize your team with its team name 
+        '''
+        # TODO: Implement this constructor by assigning the name and heroes, which should be an empty list
+        self.name = name
+        self.heroes = []
             
 
 
