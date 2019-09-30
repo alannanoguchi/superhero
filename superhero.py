@@ -145,6 +145,18 @@ class Team():
         # TODO: Implement this constructor by assigning the name and heroes, which should be an empty list
         self.name = name
         self.heroes = []
+
+    def remove_hero(self, name):
+        ''' Remove hero from heroes list.
+            If Hero isn't found return 0
+            '''
+            # TODO: Implement this method to return the hero from the list given their name
+        for hero in self.heroes:
+            if hero.name == name:
+                self.heroes.remove(hero)
+            else:
+                return 0
+        
             
 
 
