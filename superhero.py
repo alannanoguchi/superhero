@@ -132,11 +132,18 @@ class Hero:
                 print("Draw!")
 
 
-    def add_kills(self, num_kills):
+    def add_kill(self, num_kills):
         '''Update kills with num_kills'''
         # TODO: This method should add the number of kills to self.kills
-        self.num_kills = num_kills
-        self.num_kills += num_kills
+        self.kills += num_kills
+
+    def add_deaths(self, num_deaths):
+        '''Update dealths with num_deaths'''
+        # TODO: This method should add the number of deaths to self.deaths
+        self.deaths += num_deaths
+    
+
+    
 
 
 
