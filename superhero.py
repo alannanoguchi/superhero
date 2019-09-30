@@ -132,6 +132,14 @@ class Hero:
                 print("Draw!")
 
 
+    def add_kills(self, num_kills):
+        '''Update kills with num_kills'''
+        # TODO: This method should add the number of kills to self.kills
+        self.num_kills = num_kills
+        self.num_kills += num_kills
+
+
+
 class Weapon(Ability):
     def attack(self):
         """ This method returns a random value between 1/2 
@@ -170,6 +178,8 @@ class Team(Hero):
         # TODO: Add the Hero object that is passed in to the list of heroes in 
         # self.heroes
         self.heroes.append(hero)
+
+    
 
     
             
