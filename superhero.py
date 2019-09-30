@@ -162,7 +162,12 @@ class Team(Hero):
         # TODO: Loop over the list of heroes and print their nmaes to the terminal.
         for hero in self.heroes:
             print(hero.name)
-            
+        
+    def add_hero(self, hero):
+        '''Add Hero object to self.heroes.'''
+        # TODO: Add the Hero object that is passed in to the list of heroes in 
+        # self.heroes
+        self.heroes.append(hero)
             
 
 
