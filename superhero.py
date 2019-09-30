@@ -55,6 +55,8 @@ class Hero:
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
+        self.deaths = 0
+        self.kills = 0
 
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
@@ -168,6 +170,8 @@ class Team(Hero):
         # TODO: Add the Hero object that is passed in to the list of heroes in 
         # self.heroes
         self.heroes.append(hero)
+
+    
             
 
 
