@@ -11,14 +11,14 @@ class Ability:
         # TODO: Instantiate the variables listed in the docstring with then 
         # values passed in
         self.name = name
-        self.attack_strength = attack_strength
+        self.max_damage = attack_strength
        
     def attack(self):
         '''Return a value between 0 and the value set by self.max_damage'''
         # TODO: Use random,randomint(a, b) to select a ramdon attack value.
         # Return an attack value between 0 and the full attack.
         # Hint: The constructor initializes the maximum attack value.
-        return random.randint(0, self.attack_strength)
+        return random.randint(0, self.max_damage)
 
 
 class Armor:
@@ -128,9 +128,16 @@ class Hero:
                     print("The winner is: {}!".format(self.name))
             else:
                 print("Draw!")
+
+
+class Weapon(Ability):
+    def attack(self):
+        """ This method returns a random value between 1/2 
+        to the full attack power of the weapon.
+        """
+        # TODO: Use what you learned to complete this method
+        return random.randint(self.max_damage//2, self.max_damage)
             
-
-
 
 
 if __name__ == "__main__":
