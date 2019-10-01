@@ -21,6 +21,7 @@ class Ability:
         return random.randint(0, self.max_damage)
 
 
+
 class Armor:
         def __init__(self, name, max_block):
             '''Instantiate instance properties. 
@@ -35,6 +36,7 @@ class Armor:
         def block(self):
             ''' Return a random value between 0 and the initialized max_block strength '''
             return random.randint(0, self.max_block)
+
 
 
 class Hero:
@@ -161,7 +163,6 @@ class Hero:
 
 
 
-
 class Weapon(Ability):
     def attack(self):
         """ This method returns a random value between 1/2 
@@ -248,7 +249,16 @@ class Team(Hero):
             print("Kills/Deaths: {}/{}".format(hero.kills, hero.deaths))
 
     
-
+class Arena:
+    def __init__(self):
+        '''Instantiate properties
+            team_one: None
+            team_two: None
+        '''
+        # TODO: create instance variables named team_one and team_two that
+        # will hold our teams.
+        self.team_one: None
+        self.team_two: None
     
             
 
