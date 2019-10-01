@@ -282,6 +282,18 @@ class Arena:
         Weapon.attack_strength = input("Enter attack strength: ")
         return Weapon.name, Weapon.attack_strength
     
+    def create_armor(self):
+        '''Prompt user for Armor information
+          return Armor with values from user input.
+        '''
+        # TODO:This method will allow a user to create a piece of armor.
+        #  Prompt the user for the necessary information to create a new armor
+        #  object.
+        #
+        #  return the new armor object with values set by user.
+        Armor.name = input("Enter armor name: ")
+        Armor.max_block = input("Enter defensive strength: ")
+        return Armor.name, Armor.max_block
             
 
 
