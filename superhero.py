@@ -83,7 +83,7 @@ class Hero:
         # TODO: Add armor object that is passed in to 'self.armors'
         self.armors.append(armor)
 
-    def defend(self, damage_amt):
+    def defend(self, damage_amt=0):
         '''Runs 'block' method on each armor.
             Returns sum of all blocks
         '''
@@ -109,29 +109,6 @@ class Hero:
         else: 
             return False
 
-    def fight(self, opponent):
-        '''Current Hero will take turns fighting the opponent hero passed in.
-        '''
-        # TODO: Fight each hero until a victor emerges.
-        # Print the Victor's name to the screen.
-        self.opponent = opponent 
-        while self.is_alive()== True and opponent.is_alive() == True:
-            if len(self.abilities) > 0 or len(opponent.abilities) > 0:
-                self_attack = hero.attack()
-                opponent_attack = opponent.attack()
-
-                # if hero is taking damage, it is because the opponent attacked vise versa
-                self.take_damage(opponent_attack)
-                opponent.take_damage(self_attack)
-
-                if self.is_alive == False:
-                    print("The winner is: {}!".format(opponent.name))
-                else:
-                    print("The winner is: {}!".format(self.name))
-            else:
-                print("Draw!")
-
-
     def add_kill(self, num_kills):
         '''Update kills with num_kills'''
         # TODO: This method should add the number of kills to self.kills
@@ -141,9 +118,39 @@ class Hero:
         '''Update dealths with num_deaths'''
         # TODO: This method should add the number of deaths to self.deaths
         self.deaths += num_deaths
-    
 
-    
+    def fight(self, opponent):
+        '''Current Hero will take turns fighting the opponent hero passed in.
+        '''
+        # TODO: Fight each hero until a victor emerges.
+        # Print the Victor's name to the screen.
+
+        # TODO: Refractor this method to update the number of kills the hero
+        # has when the opponent dies. Also update the number of deaths for whoever
+        # dies in the fight
+        
+        # self.opponent = opponent 
+        
+        while self.is_alive()== True and opponent.is_alive() == True:
+            if len(self.abilities) > 0 or len(opponent.abilities) > 0:
+                self_attack = self.attack()
+                opponent_attack = opponent.attack()
+
+                # if hero is taking damage, it is because the opponent attacked vise versa
+                self.take_damage(opponent_attack)
+                opponent.take_damage(self_attack)
+
+                if self.is_alive == False:
+                    print("The winner is: {}!".format(opponent.name))
+                    opponent.kills += 1
+                    self.deaths += 1
+                else:
+                    print("The winner is: {}!".format(self.name))
+                    self.kills += 1
+                    opponent.deaths += 1
+            else:
+                print("Draw!")
+
 
 
 
@@ -154,6 +161,8 @@ class Weapon(Ability):
         """
         # TODO: Use what you learned to complete this method
         return random.randint(self.max_damage//2, self.max_damage)
+
+
 
 class Team(Hero):
     def __init__(self, name):
@@ -171,8 +180,7 @@ class Team(Hero):
         for hero in self.heroes:
             if hero.name == name:
                 self.heroes.remove(hero)
-            else:
-                return 0
+        return 0
     
     def view_all_heroes(self):
         ''' Prints out all heroes to the console.'''
@@ -185,6 +193,47 @@ class Team(Hero):
         # TODO: Add the Hero object that is passed in to the list of heroes in 
         # self.heroes
         self.heroes.append(hero)
+
+    def attack(self, other_team):
+        ''' Battle each team against each other.'''
+        # TODO: Randomly select a living hero from each team and have
+        # them fight until one or both teams have no surviving heroes.
+        # Hint: Use the fight method in the Hero class.
+
+        # while self.hero in hero.is_alive() == True and self.hero in other_team.is_alive() == True:
+        #     hero = random.choice(self.heroes)
+        #     opponent = random.choice(self.heroes)
+        #     return hero.fight()
+        alive_heroes = []
+        alive_opponents = []
+
+        for hero in self.heroes:
+            if hero.is_alive():
+                alive_heroes.append(hero)
+
+        for hero in other_team.heroes:
+            if hero.is_alive():
+                alive_opponents.append(hero)
+        
+        hero = random.choice(alive_heroes)
+        opponent = random.choice(alive_opponents)
+
+        hero.fight(opponent)
+
+            
+    def revive_heroes(self, health=100):
+        ''' Reset all heroes health to starting_health'''
+        # TODO: This method should reset all heroes health to their
+        # original starting value.
+        
+
+    def stats(self):
+        '''Print team statistics'''
+        # TODO: This method should print the ratio of kills/deaths for each
+        # member of the team to the screen.
+        # This data must be output to the console.
+        # Hint: Use the information stored in each hero.
+
 
     
 
