@@ -271,6 +271,16 @@ class Arena:
         Ability.attack_strength = input("Enter attack strength: ")
         return Ability.name, Ability.attack_strength
         
+    def create_weapon(self):
+        '''Prompt user for Weapon information
+            return Weapon with values from user input.
+        '''
+        # TODO: This method will allow a user to create a weapon.
+        # Prompt the user for the necessary information to create a new weapon object.
+        # return the new weapon object.
+        Weapon.name = input("Enter weapon name: ")
+        Weapon.attack_strength = input("Enter attack strength: ")
+        return Weapon.name, Weapon.attack_strength
     
             
 
