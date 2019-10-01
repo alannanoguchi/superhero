@@ -225,7 +225,8 @@ class Team(Hero):
         ''' Reset all heroes health to starting_health'''
         # TODO: This method should reset all heroes health to their
         # original starting value.
-        
+        for hero in self.heroes:
+            hero.current_health = hero.starting_health
 
     def stats(self):
         '''Print team statistics'''
@@ -233,7 +234,10 @@ class Team(Hero):
         # member of the team to the screen.
         # This data must be output to the console.
         # Hint: Use the information stored in each hero.
-
+        print("Current stats: " '/n')
+        for hero in self.heroes:
+            print("Hero: {}".format(hero.name))
+            print("K/D: {}/{}".format(hero.kills, hero.deaths))
 
     
 
