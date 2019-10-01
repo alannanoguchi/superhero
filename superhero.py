@@ -401,25 +401,26 @@ class Arena:
 
 
 if __name__ == "__main__":
-    # If you run this file from the terminal
-    # this block is executed
+    game_is_running = True
 
-    # team_one = Team("One")
-    # jodie = Hero("Jodie Foster")
-    # aliens = Ability("Alien Friends", 10000)
-    # jodie.add_ability(aliens)
-    # team_one.add_hero(jodie)
-    # team_two = Team("Two")
-    # athena = Hero("Athena")
-    # socks = Armor("Socks", 10)
-    # athena.add_armor(socks)
-    # team_two.add_hero(athena)
-    # # assert team_two.heroes[0].deaths == 0
-    # team_one.attack(team_two)
-    # # assert team_two.heroes[0].deaths == 1
-    # print(team_one.stats()) 
+    # Instantiate Game Arena
     arena = Arena()
+
+    #Build Teams
     arena.build_team_one()
     arena.build_team_two()
-    arena.team_battle()
-    arena.show_stats()
+
+    while game_is_running:
+
+        arena.team_battle()
+        arena.show_stats()
+        play_again = input("Play Again? Y or N: ")
+
+        #Check for Player Input
+        if play_again.lower() == "n":
+            game_is_running = False
+
+        else:
+            #Revive heroes to play again
+            arena.team_one.revive_heroes()
+            arena.team_two.revive_heroes()
