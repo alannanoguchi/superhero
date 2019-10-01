@@ -295,6 +295,60 @@ class Arena:
         Armor.max_block = input("Enter defensive strength: ")
         return Armor.name, Armor.max_block
             
+    def create_hero(self):
+        '''Prompt user for Hero information
+          return Hero with values from user input.
+        '''
+        # TODO: This method should allow a user to create a hero.
+        # User should be able to specify if they want armors, weapons, and
+        # abilities.
+        # Call the methods you made above and use the return values to build
+        # your hero.
+        #
+        # return the new hero object
+        # Hero's Information:
+        name = input("What is the name of the hero?: ")
+        health = input("What is the starting health of your hero?: ")
+        hero = Hero(name, health)
+
+        # Hero's Armor:
+        armor_option = True
+        while armor_option:
+            armor_option = input("Would you like to add armor?: (Y/N)").lower()
+            if armor_option == "y" or "yes":
+                armor = self.create_armor()
+                hero.add_armor(armor)
+            else:
+                armor_option = False
+                continue
+
+        
+        # Hero's Ability:
+        ability_option = True
+        while ability_option:
+            ability_option = input("Would you like to add an ability to your hero?: (Y/N)").lower()
+            if ability_option == "y" or ability_option == "yes":
+                ability = self.create_ability()
+                hero.add_ability(ability)
+            else:
+                ability_option = False
+                continue
+
+        # Hero's Weapon:
+        weapons_option = True
+        while weapons_option:
+            weapon_option = input("Would you like to add a weapon to your hero?: (Y/N)").lower()
+            if weapon_option == "y" or weapon_option == "yes":
+                weapon = self.create_weapon()
+                hero.add_weapon(weapon)
+            else:
+                weapons_option = False
+                continue
+
+        return hero
+
+
+            
 
 
 if __name__ == "__main__":
