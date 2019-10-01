@@ -259,6 +259,18 @@ class Arena:
         # will hold our teams.
         self.team_one: None
         self.team_two: None
+
+    def create_ability(self):
+        '''Prompt for Ability information.
+            return Ability with values from user Input
+        '''
+        # TODO: This method will allow a user to create an ability.
+        # Prompt the user for the necessary information to create a new ability object.
+        # return the new ability object.
+        Ability.name = input("Enter in an ability: ")
+        Ability.attack_strength = input("Enter attack strength: ")
+        return Ability.name, Ability.attack_strength
+        
     
             
 
