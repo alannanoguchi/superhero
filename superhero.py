@@ -307,44 +307,27 @@ class Arena:
         #
         # return the new hero object
         # Hero's Information:
-        name = input("What is the name of the hero?: ")
-        health = input("What is the starting health of your hero?: ")
+        name = input("Hero's name: ")
+        health = input("Insert starting health: ")
         hero = Hero(name, health)
 
-        # Hero's Armor:
-        armor_option = True
-        while armor_option:
-            armor_option = input("Would you like to add armor?: (Y/N)").lower()
-            if armor_option == "y" or "yes":
-                armor = self.create_armor()
-                hero.add_armor(armor)
-            else:
-                armor_option = False
-                continue
-
-        
-        # Hero's Ability:
-        ability_option = True
-        while ability_option:
-            ability_option = input("Would you like to add an ability to your hero?: (Y/N)").lower()
-            if ability_option == "y" or ability_option == "yes":
+        build_hero = True
+        while build_hero == True:
+            hero_options = input("Please use numbers to enter options:\n1 Ability\n2 Armor\n3 Weapon\n4 Finished: ")
+            if hero_options == "1":
                 ability = self.create_ability()
                 hero.add_ability(ability)
-            else:
-                ability_option = False
-                continue
-
-        # Hero's Weapon:
-        weapons_option = True
-        while weapons_option:
-            weapon_option = input("Would you like to add a weapon to your hero?: (Y/N)").lower()
-            if weapon_option == "y" or weapon_option == "yes":
+            elif hero_options == "2":
+                armor = self.create_armor()
+                hero.add_armor(armor)
+            elif hero_options == "3":
                 weapon = self.create_weapon()
                 hero.add_weapon(weapon)
+            elif hero_options == "4":
+                build_hero = False          
             else:
-                weapons_option = False
-                continue
-
+                print("Invalid option. Follow instructions.")
+        
         return hero
 
 
@@ -355,7 +338,7 @@ class Arena:
         # call self.create_hero() for every hero that the user wants to add to team one.
         #
         # Add the created hero to team one.
-        self.number_of_heroes: int(input("How many heroes are on each team?: "))
+        self.number_of_heroes = int(input("How many heroes are on each team?: "))
         team_one_name = input("Enter Team One Name: ")
         self.team_one = Team(team_one_name)
 
@@ -389,6 +372,31 @@ class Arena:
         # Call the attack method that exists in your team objects
         # for that battle functionality.
         Team.fight(self.team_one, self.team_two)
+
+    
+    def show_stats(self):
+        '''Prints team statistics to terminal.'''
+        # TODO: This method should print out battle statistics
+        # including each team's average kill/death ratio.
+        # Required Stats:
+        #     Declare winning team
+        #     Show both teams average kill/death ratio.
+        #     Show surviving heroes.
+        self.team_one.stats()
+        self.team_two.stats()
+
+        winning_team = self.team_one.atack(self.team_two)
+        if winning_team == self.team_one.name:
+            for hero in self.team_one.heroes:
+                if hero.status == "Alive":
+                    print("Remaining Heroes: " + hero.name)
+        elif winning_team == self.team_two.name:
+            for hero in self.team_two.heroes:
+                if hero.status == "Alive":
+                    print("Remaing Heroes: " + hero.name)
+        print("Congratulations {}! Your team wins!".format(winning_team))
+
+
             
 
 
@@ -396,17 +404,22 @@ if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed
 
-    team_one = Team("One")
-    jodie = Hero("Jodie Foster")
-    aliens = Ability("Alien Friends", 10000)
-    jodie.add_ability(aliens)
-    team_one.add_hero(jodie)
-    team_two = Team("Two")
-    athena = Hero("Athena")
-    socks = Armor("Socks", 10)
-    athena.add_armor(socks)
-    team_two.add_hero(athena)
-    # assert team_two.heroes[0].deaths == 0
-    team_one.attack(team_two)
-    # assert team_two.heroes[0].deaths == 1
-    print(team_one.stats()) 
+    # team_one = Team("One")
+    # jodie = Hero("Jodie Foster")
+    # aliens = Ability("Alien Friends", 10000)
+    # jodie.add_ability(aliens)
+    # team_one.add_hero(jodie)
+    # team_two = Team("Two")
+    # athena = Hero("Athena")
+    # socks = Armor("Socks", 10)
+    # athena.add_armor(socks)
+    # team_two.add_hero(athena)
+    # # assert team_two.heroes[0].deaths == 0
+    # team_one.attack(team_two)
+    # # assert team_two.heroes[0].deaths == 1
+    # print(team_one.stats()) 
+    arena = Arena()
+    arena.build_team_one()
+    arena.build_team_two()
+    arena.team_battle()
+    arena.show_stats()
