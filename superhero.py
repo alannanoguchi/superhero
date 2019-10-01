@@ -365,6 +365,7 @@ class Arena:
 
         self.team_one.view_all_heroes()
 
+
     def build_team_two(self):
         '''Prompt the user to build team_two'''
         # TODO: This method should allow a user to create team two.
@@ -382,6 +383,12 @@ class Arena:
         self.team_two.view_all_heroes()
 
 
+    def team_battle(self):
+        '''Battle team_one and team_two together.'''
+        # TODO: This method should battle the teams together.
+        # Call the attack method that exists in your team objects
+        # for that battle functionality.
+        Team.fight(self.team_one, self.team_two)
             
 
 
