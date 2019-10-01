@@ -151,6 +151,14 @@ class Hero:
             else:
                 print("Draw!")
 
+    def add_weapon(self, weapon):
+        '''Add weapon to self.abilities'''
+        # TODO: This method will append the weapon object passed in as an
+        # argument to self.abilities.
+        # This means that self.abilities will be a list of
+        # abilities and weapons.
+        self.abilities.append(weapon)
+
 
 
 
@@ -234,10 +242,10 @@ class Team(Hero):
         # member of the team to the screen.
         # This data must be output to the console.
         # Hint: Use the information stored in each hero.
-        print("Current stats: " '/n')
+        print("Current stats: ")
         for hero in self.heroes:
             print("Hero: {}".format(hero.name))
-            print("K/D: {}/{}".format(hero.kills, hero.deaths))
+            print("Kills/Deaths: {}/{}".format(hero.kills, hero.deaths))
 
     
 
@@ -249,13 +257,17 @@ if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed
 
-    hero = Hero("Pumpkin Pie")
-    opponent = Hero("Vanilla Cake")
-    ability1 = Ability("Lazer Eyes", 65)
-    ability2 = Ability("Super Strength", 80)
-    ability3 = Ability("Super Speed", 70)
-    hero.add_ability(ability1)
-    hero.add_ability(ability2)
-    opponent.add_ability(ability2)
-    opponent.add_ability(ability3)
-    hero.fight(opponent)
+    team_one = Team("One")
+    jodie = Hero("Jodie Foster")
+    aliens = Ability("Alien Friends", 10000)
+    jodie.add_ability(aliens)
+    team_one.add_hero(jodie)
+    team_two = Team("Two")
+    athena = Hero("Athena")
+    socks = Armor("Socks", 10)
+    athena.add_armor(socks)
+    team_two.add_hero(athena)
+    # assert team_two.heroes[0].deaths == 0
+    team_one.attack(team_two)
+    # assert team_two.heroes[0].deaths == 1
+    print(team_one.stats()) 

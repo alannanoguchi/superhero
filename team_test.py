@@ -383,6 +383,7 @@ def test_team_attack_deaths():
     assert team_two.heroes[0].deaths == 0
     team_one.attack(team_two)
     assert team_two.heroes[0].deaths == 1
+    print(team_one.stats())
 
 
 def test_revive_heroes():
