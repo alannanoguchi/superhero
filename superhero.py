@@ -371,7 +371,7 @@ class Arena:
         # TODO: This method should battle the teams together.
         # Call the attack method that exists in your team objects
         # for that battle functionality.
-        Team.fight(self.team_one, self.team_two)
+        self.team_one.attack(self.team_two)
 
     
     def show_stats(self):
